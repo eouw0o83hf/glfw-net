@@ -21,7 +21,7 @@ namespace GLFW
         ///     The native library name,
         ///     <para>For Unix users using an installed version of GLFW, this needs refactored to <c>glfw</c>.</para>
         /// </summary>
-        public const string LIBRARY = "glfw";
+        public const string LIBRARY = "/usr/local/lib/libglfw.3.3.dylib";
 
         private static readonly ErrorCallback errorCallback = GlfwError;
 
@@ -258,7 +258,7 @@ namespace GLFW
             for (var i = 0; i < count; i++)
             {
                 var value = Marshal.ReadByte(ptr, i);
-                hat |= (Hat) value;
+                hat |= (Hat)value;
             }
 
             return hat;
@@ -1492,7 +1492,7 @@ namespace GLFW
         /// <returns>The client API.</returns>
         public static ClientApi GetClientApi(Window window)
         {
-            return (ClientApi) GetWindowAttribute(window, (int) ContextAttributes.ClientApi);
+            return (ClientApi)GetWindowAttribute(window, (int)ContextAttributes.ClientApi);
         }
 
         /// <summary>
@@ -1514,7 +1514,7 @@ namespace GLFW
         /// <returns>The API used to create the context.</returns>
         public static ContextApi GetContextCreationApi(Window window)
         {
-            return (ContextApi) GetWindowAttribute(window, (int) ContextAttributes.ContextCreationApi);
+            return (ContextApi)GetWindowAttribute(window, (int)ContextAttributes.ContextCreationApi);
         }
 
         /// <summary>
@@ -1546,7 +1546,7 @@ namespace GLFW
         /// <returns>The current gamma ramp, or empty structure if an error occurred.</returns>
         public static GammaRamp GetGammaRamp(Monitor monitor)
         {
-            return (GammaRamp) Marshal.PtrToStructure<GammaRampInternal>(GetGammaRampInternal(monitor));
+            return (GammaRamp)Marshal.PtrToStructure<GammaRampInternal>(GetGammaRampInternal(monitor));
         }
 
         /// <summary>
@@ -1556,7 +1556,7 @@ namespace GLFW
         /// <returns><c>true</c> if window context is debug context, otherwise <c>false</c>.</returns>
         public static bool GetIsDebugContext(Window window)
         {
-            return GetWindowAttribute(window, (int) ContextAttributes.OpenglDebugContext) == (int) Constants.True;
+            return GetWindowAttribute(window, (int)ContextAttributes.OpenglDebugContext) == (int)Constants.True;
         }
 
         /// <summary>
@@ -1566,7 +1566,7 @@ namespace GLFW
         /// <returns><c>true</c> if window context is forward compatible, otherwise <c>false</c>.</returns>
         public static bool GetIsForwardCompatible(Window window)
         {
-            return GetWindowAttribute(window, (int) ContextAttributes.OpenglForwardCompat) == (int) Constants.True;
+            return GetWindowAttribute(window, (int)ContextAttributes.OpenglForwardCompat) == (int)Constants.True;
         }
 
         /// <summary>
@@ -1598,7 +1598,7 @@ namespace GLFW
             var ptr = GetJoystickButtons(joystick, out var count);
             var states = new InputState[count];
             for (var i = 0; i < count; i++)
-                states[i] = (InputState) Marshal.ReadByte(ptr, i);
+                states[i] = (InputState)Marshal.ReadByte(ptr, i);
             return states;
         }
 
@@ -1667,7 +1667,7 @@ namespace GLFW
         /// <returns>Profile of the window.</returns>
         public static Profile GetProfile(Window window)
         {
-            return (Profile) GetWindowAttribute(window, (int) ContextAttributes.OpenglProfile);
+            return (Profile)GetWindowAttribute(window, (int)ContextAttributes.OpenglProfile);
         }
 
         /// <summary>
@@ -1677,7 +1677,7 @@ namespace GLFW
         /// <returns>Current set value of the robustness.</returns>
         public static Robustness GetRobustness(Window window)
         {
-            return (Robustness) GetWindowAttribute(window, (int) ContextAttributes.ContextRobustness);
+            return (Robustness)GetWindowAttribute(window, (int)ContextAttributes.ContextRobustness);
         }
 
         /// <summary>
@@ -1721,7 +1721,7 @@ namespace GLFW
         /// <returns>The value of the attribute, or zero if an error occurred.</returns>
         public static bool GetWindowAttribute(Window window, WindowAttribute attribute)
         {
-            return GetWindowAttribute(window, (int) attribute) == (int) Constants.True;
+            return GetWindowAttribute(window, (int)attribute) == (int)Constants.True;
         }
 
         /// <summary>
@@ -1773,7 +1773,7 @@ namespace GLFW
         /// </summary>
         /// <param name="hint">The hint.</param>
         /// <param name="value">The value.</param>
-        public static void WindowHint(Hint hint, ClientApi value) { WindowHint(hint, (int) value); }
+        public static void WindowHint(Hint hint, ClientApi value) { WindowHint(hint, (int)value); }
 
         /// <summary>
         ///     Sets hints for the next call to <see cref="CreateWindow" />. The hints, once set, retain their values
@@ -1787,7 +1787,7 @@ namespace GLFW
         /// </summary>
         /// <param name="hint">The hint.</param>
         /// <param name="value">The value.</param>
-        public static void WindowHint(Hint hint, Constants value) { WindowHint(hint, (int) value); }
+        public static void WindowHint(Hint hint, Constants value) { WindowHint(hint, (int)value); }
 
         /// <summary>
         ///     Sets hints for the next call to <see cref="CreateWindow" />. The hints, once set, retain their values
@@ -1801,7 +1801,7 @@ namespace GLFW
         /// </summary>
         /// <param name="hint">The hint.</param>
         /// <param name="value">The value.</param>
-        public static void WindowHint(Hint hint, ContextApi value) { WindowHint(hint, (int) value); }
+        public static void WindowHint(Hint hint, ContextApi value) { WindowHint(hint, (int)value); }
 
         /// <summary>
         ///     Sets hints for the next call to <see cref="CreateWindow" />. The hints, once set, retain their values
@@ -1815,7 +1815,7 @@ namespace GLFW
         /// </summary>
         /// <param name="hint">The hint.</param>
         /// <param name="value">The value.</param>
-        public static void WindowHint(Hint hint, Robustness value) { WindowHint(hint, (int) value); }
+        public static void WindowHint(Hint hint, Robustness value) { WindowHint(hint, (int)value); }
 
         /// <summary>
         ///     Sets hints for the next call to <see cref="CreateWindow" />. The hints, once set, retain their values
@@ -1829,7 +1829,7 @@ namespace GLFW
         /// </summary>
         /// <param name="hint">The hint.</param>
         /// <param name="value">The value.</param>
-        public static void WindowHint(Hint hint, Profile value) { WindowHint(hint, (int) value); }
+        public static void WindowHint(Hint hint, Profile value) { WindowHint(hint, (int)value); }
 
         /// <summary>
         ///     Sets hints for the next call to <see cref="CreateWindow" />. The hints, once set, retain their values
@@ -1843,13 +1843,13 @@ namespace GLFW
         /// </summary>
         /// <param name="hint">The hint.</param>
         /// <param name="value">The value.</param>
-        public static void WindowHint(Hint hint, ReleaseBehavior value) { WindowHint(hint, (int) value); }
+        public static void WindowHint(Hint hint, ReleaseBehavior value) { WindowHint(hint, (int)value); }
 
         private static void GetContextVersion(Window window, out int major, out int minor, out int revision)
         {
-            major = GetWindowAttribute(window, (int) ContextAttributes.ContextVersionMajor);
-            minor = GetWindowAttribute(window, (int) ContextAttributes.ContextVersionMinor);
-            revision = GetWindowAttribute(window, (int) ContextAttributes.ContextVersionRevision);
+            major = GetWindowAttribute(window, (int)ContextAttributes.ContextVersionMajor);
+            minor = GetWindowAttribute(window, (int)ContextAttributes.ContextVersionMinor);
+            revision = GetWindowAttribute(window, (int)ContextAttributes.ContextVersionRevision);
         }
 
         private static void GlfwError(ErrorCode code, IntPtr message)
