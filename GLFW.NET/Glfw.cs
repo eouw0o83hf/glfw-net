@@ -21,7 +21,11 @@ namespace GLFW
         ///     The native library name,
         ///     <para>For Unix users using an installed version of GLFW, this needs refactored to <c>glfw</c>.</para>
         /// </summary>
+#if WINDOWS
         public const string LIBRARY = "/usr/local/lib/libglfw.3.3.dylib";
+#else
+        public const string LIBRARY = "glfw3";
+#endif
 
         private static readonly ErrorCallback errorCallback = GlfwError;
 
